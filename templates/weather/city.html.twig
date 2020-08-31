@@ -1,0 +1,67 @@
+{# templates/weather/city.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row mt-5 text-center">
+            <div class="col"></div>
+            <div class="col">
+                <h2>Weather App</h2>
+                <label class="mb-5" for="input"></label>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="city">City</span>
+                    </div>
+                    <input type="text" id="input" class="form-control" />
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" id="send" onclick="send()" > Send </button>
+                    </div>
+                </div>
+
+                {% if city %}
+                    <h3 class="mt-5">
+                        City: {{ weather.name }}, {{ weather.country }}
+                    </h3>
+
+                    <div class=""><h3>{{ weather.temperature }} °c</h3></div>
+
+                    <img src="{{ weather.icon }}" alt="#"/>
+                    <span class="mt-4">{{ weather.weather }}</span>
+                {% endif %}
+
+
+
+            </div>
+            <div class="col"></div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+    <script>
+
+        function send()
+        {
+            var cityName = document.getElementById("input").value;
+            var url = "http://localhost:8000/weather/";
+            url += cityName;
+            window.location=url;
+        }
+
+        $(document).on('keypress', function(e){
+            if(e.which == 13) {
+                send();
+            }
+        })
+
+    </script>
+
+{% endblock %}
