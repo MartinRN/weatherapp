@@ -19,7 +19,7 @@ class OpenWeatherMap
 
     public function getWeather(?String $city)
     {
-        $defaultUrl = "http://api.openweathermap.org/data/2.5/weather?APPID=e6b30269a76ed8b80cdee26aaabffc74";
+        $defaultUrl = "http://api.openweathermap.org/data/2.5/weather?APPID=e6b30269a76ed8b80cdee26aaabffc74&units=metric";
         $defaultUrl.= "&q=".$city;
         $response = $this->openweatherchannel->request('GET', $defaultUrl);
         $data = $response->getContent();
@@ -30,7 +30,7 @@ class OpenWeatherMap
         $cityWeather->setCountry($data['sys']['country']);
         $cityWeather->setIcon('https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/'.$data['weather'][0]['icon'].'.svg');
         $cityWeather->setName($city);
-        $cityWeather->setTemperature($data['main']['temp'] - 272.15);
+        $cityWeather->setTemperature($data['main']['temp']);
         $cityWeather->setWeather($data['weather'][0]['description']);
 
         return $cityWeather;

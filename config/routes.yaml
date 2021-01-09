@@ -1,3 +1,7 @@
+weather:
+    path: /weather/{city?}
+    controller: App\Controller\DefaultController::weather
+
 index:
-    path: /
-    controller: App\Controller\DefaultController::index
+  path: /
+  controller: App\Controller\DefaultController::index

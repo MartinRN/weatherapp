@@ -51,7 +51,7 @@
         function send()
         {
             var cityName = document.getElementById("input").value;
-            var url = "http://localhost:8000/weather/";
+            var url = "http://"+location.hostname+":"+location.port+"/weather/";
             url += cityName;
             window.location=url;
         }
