@@ -1,6 +1,7 @@
 # see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
     secret: '%env(APP_SECRET)%'
+
     #csrf_protection: true
     #http_method_override: true
 
@@ -11,14 +12,7 @@ framework:
         cookie_secure: auto
         cookie_samesite: lax
 
-    http_client:
-        scoped_clients:
-            app.open.street.map:
-                base_uri: 'https://api.openweathermap.org/'
-                headers:
-                    'Authorization': 'Bearer e6b30269a76ed8b80cdee26aaabffc74'
-                # HTTP Bearer authentication (also called token authentication)
-                #auth_bearer: e6b30269a76ed8b80cdee26aaabffc74
+                
 
 
 

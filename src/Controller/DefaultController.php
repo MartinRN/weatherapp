@@ -9,6 +9,8 @@ use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+
 class DefaultController extends AbstractController
 {
 
@@ -24,11 +26,11 @@ class DefaultController extends AbstractController
     /**
      * @Route("/weather/{?city}", name="weather", requirements={"city"="[a-zA-Z]*"})
      */
-    public function weather(OpenWeatherMap $openWeatherMap, ? String $city)
+    public function weather(OpenWeatherMap $openWeatherMap, ? String $city, ParameterBagInterface $params)
     {
         if($city)
         {
-            $weather = $openWeatherMap->getWeather($city);
+            $weather = $openWeatherMap->getWeather($city, $params);
         }
         else
         {

@@ -8,6 +8,8 @@ use App\Entity\City;
 use Symfony\Component\HttpClient\ScopingHttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+
 class OpenWeatherMap
 {
     private $openweatherchannel;
@@ -17,9 +19,10 @@ class OpenWeatherMap
         $this->openweatherchannel = $openweatherchannel;
     }
 
-    public function getWeather(?String $city)
+    public function getWeather(?String $city, ParameterBagInterface $params)
     {
-        $defaultUrl = "http://api.openweathermap.org/data/2.5/weather?APPID=e6b30269a76ed8b80cdee26aaabffc74&units=metric";
+        $api_key = $params->get('api_key');
+        $defaultUrl = "http://api.openweathermap.org/data/2.5/weather?APPID=".$api_key."&units=metric";
         $defaultUrl.= "&q=".$city;
         $response = $this->openweatherchannel->request('GET', $defaultUrl);
         $data = $response->getContent();
