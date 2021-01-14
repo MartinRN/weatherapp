@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                {% if city %}
+                {% if weather is not null %}
                     <h3 class="mt-5">
                         City: {{ weather.name }}, {{ weather.country }}
                     </h3>
@@ -30,6 +30,10 @@
 
                     <img src="{{ weather.icon }}" alt="#"/>
                     <span class="mt-4">{{ weather.weather }}</span>
+                {% else %}
+                    <h3 class="mt-5">
+                        City: {{ city }}, is unavailable.
+                    </h3>                    
                 {% endif %}
 
 
