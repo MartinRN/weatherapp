@@ -30,7 +30,7 @@
 
                     <img src="{{ weather.icon }}" alt="#"/>
                     <span class="mt-4">{{ weather.weather }}</span>
-                {% else %}
+                {% elseif city is not null %}
                     <h3 class="mt-5">
                         City: {{ city }}, is unavailable.
                     </h3>                    
