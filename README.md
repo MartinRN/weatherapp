@@ -11,7 +11,7 @@ It keeps me coding when I have time.
 
 
 ## Next features
-I would like to add:
+
   * Autocompletion for the city
   * Be able to select the country
   * A color code based on the weather
